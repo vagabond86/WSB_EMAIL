@@ -14,7 +14,6 @@ public class MailService {
     final private JavaMailSender javaMailSender;
 
     void sendMail(Mail mail) {
-
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
@@ -26,11 +25,8 @@ public class MailService {
                 mimeMessageHelper.addAttachment(mail.getAttachment().getOriginalFilename(), mail.getAttachment());
             }
             javaMailSender.send(mimeMessage);
-
         } catch (MessagingException e) {
-            System.out.println("Nie mogę wysłać maila, spróbuj później");
+            System.out.println("Błąd. Spróbuj ponownie później");
         }
-
-
     }
 }
